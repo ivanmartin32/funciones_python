@@ -188,12 +188,12 @@ def ej5():
 
     # Por ejemplo creo una lista de 5 elemtnos
     lista_numeros = lista_aleatoria(inicio,fin,cantidad_numeros)
-    print('La lista de numeros es:')
-    print(lista_numeros)
+    print('La lista de numeros es:\n', lista_numeros)
+    
     # Luego quiero averiguar cuantas veces se repite el numero 3
     cantidad_tres = contar(lista_numeros, 3)
-    print('Se repite', numero_consulta)
-    print(cantidad_tres)
+    print('El numero 3 se repite {} vez/veces'.format(cantidad_tres))
+    
 
 
 if __name__ == '__main__':
