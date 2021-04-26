@@ -43,6 +43,13 @@ def lista_aleatoria (inicio, fin, cantidad):
         lista.append(numero)
     return lista
 
+def contar(lista,num_contar):
+    contador = 0
+    for i in range(len(lista)):
+        if lista[i] == num_contar:
+            contador += 1
+    return contador
+
 def ej1():
     print('Mi primera funcion')
     # Realice una función llamada "imprimir_nombre"
@@ -162,6 +169,9 @@ def ej4():
 def ej5():
     # Ejercicios de listas y métodos
     cantidad_numeros = 5
+    inicio = 1
+    fin = 9
+    numero_consulta = 3
 
     '''
     Utilice la función "lista_aleatoria" para generar
@@ -177,9 +187,13 @@ def ej5():
     '''
 
     # Por ejemplo creo una lista de 5 elemtnos
-    # lista_numeros = lista_aleatoria(...,...,cantidad_numeros)
+    lista_numeros = lista_aleatoria(inicio,fin,cantidad_numeros)
+    print('La lista de numeros es:')
+    print(lista_numeros)
     # Luego quiero averiguar cuantas veces se repite el numero 3
-    # cantidad_tres = contar(lista_numeros, 3)
+    cantidad_tres = contar(lista_numeros, 3)
+    print('Se repite', numero_consulta)
+    print(cantidad_tres)
 
 
 if __name__ == '__main__':
