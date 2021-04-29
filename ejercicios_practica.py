@@ -29,7 +29,11 @@ def promedio(numeros):
     # Alumno:
     # 1) calcule el promedio
     # 2) use "return" para retornar ese valor
-    return
+    sumatoria_numeros = sum(numeros)
+    cantidad_numeros = len(numeros)
+    prom = sumatoria_numeros / cantidad_numeros
+
+    return prom
     # Cuando termine de implementar está función borrar "pass"
 
 def ordenar(numeros):
@@ -94,12 +98,12 @@ def ej2():
     # Ya la función fue preparada para que usted le pase "numeros"
     # como parámetro, falta que calcule el promedio y retorne el valor
     # resultante.
-    sumatoria_numeros = sum(numeros)
-    cantidad_numeros = len(numeros)
+    
+    
 
     # Llamar a la función en este lugar y capturar el valor del retorno
     # promedio_re
-    promedio_re = sumatoria_numeros / cantidad_numeros
+    promedio_re = promedio(numeros)
 
     # Luego imprimir en pantalla el valor resultante, tal que:
     print('El promedio es:', promedio_re)
