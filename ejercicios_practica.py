@@ -37,7 +37,7 @@ def promedio(numeros):
     # Cuando termine de implementar está función borrar "pass"
 
 def ordenar(numeros):
-    
+    numeros.sort()
     return numeros
 
 def lista_aleatoria (inicio, fin, cantidad):
@@ -127,7 +127,7 @@ def ej3():
     # Luego de crear la función invocarla en este lugar:
     lista_ordenada = ordenar(numeros)
     # Imprimir en pantalla "lista_ordenada" que tendrá
-    lista_ordenada.sort()
+    
     print('La lista ordenada de numeros es:', lista_ordenada)
     # los valores retornado por la función ordenar
 
