@@ -15,6 +15,43 @@ __author__ = "Inove Coding School"
 __email__ = "alumnos@inove.com.ar"
 __version__ = "1.3"
 
+import random
+from collections import Counter
+
+def lista_de_tiro (valor_min, valor_max, cantidad_dados):
+    lista = []
+    for i in range(cantidad_dados):
+        numero = random.randrange(valor_min, valor_max+1)
+        lista.append(numero)
+    return lista
+
+def ordenar(valor_de_dados):
+    valor_de_dados.sort()
+    return valor_de_dados
+
+def contar(valor_de_dados,valor_a_contar1,valor_a_contar2,
+                        valor_a_contar3,valor_a_contar4,valor_a_contar5,
+                        valor_a_contar6):
+    contador1 = 0
+    contador2 = 0
+    contador3 = 0
+    contador4 = 0
+    contador5 = 0
+    contador6 = 0
+    for i in range(len(valor_de_dados)):
+        if valor_de_dados[i] == valor_a_contar1:
+            contador1 += 1
+        if valor_de_dados[i] == valor_a_contar2:
+            contador2 += 1
+        if valor_de_dados[i] == valor_a_contar3:
+            contador3 += 1
+        if valor_de_dados[i] == valor_a_contar4:
+            contador4 += 1
+        if valor_de_dados[i] == valor_a_contar5:
+            contador5 += 1
+        if valor_de_dados[i] == valor_a_contar6:
+            contador6 += 1
+    return contador1,contador2,contador3,contador4,contador5,contador6
 
 def ej1():
     print('Comencemos a crear lo nuestro!')
@@ -49,11 +86,21 @@ def ej2():
     [1, 2, 3, 2, 5]
     Cada valor representa el valor que sacó cada uno de los 5 dados
 
+    
     1)
     Utilice la función "ordenar" para ordenar la lista
     de números generados.
     Imprimir en pantalla la lista ordenada
     '''
+    numero_min = 1
+    numero_max = 6
+    cantidad_dados = 5
+
+    valor_de_dados = lista_de_tiro(numero_min, numero_max, cantidad_dados)
+
+    valor_ordenado = ordenar(valor_de_dados)
+
+    print('El valor de los 5 dados arrojados y ordenados es', valor_ordenado)
 
 
 def ej3():
@@ -87,7 +134,32 @@ def ej3():
     vistos en clase para ver como se implementa max con esa key
 
     '''
+    numero_min = 1
+    numero_max = 6
+    cantidad_dados = 5
+    valor_a_contar1 = 1
+    valor_a_contar2 = 2
+    valor_a_contar3 = 3
+    valor_a_contar4 = 4
+    valor_a_contar5 = 5
+    valor_a_contar6 = 6
 
+    valor_de_dados = lista_de_tiro(numero_min, numero_max, cantidad_dados)
+    
+    (contar_numero1,contar_numero2,
+    contar_numero3,contar_numero4,
+    contar_numero5,contar_numero6) = contar(valor_de_dados,valor_a_contar1,valor_a_contar2,
+                                            valor_a_contar3,valor_a_contar4,valor_a_contar5,
+                                            valor_a_contar6)
+
+    print('La cantidad de veces que aparece el numero 1 es:', contar_numero1)
+    print('La cantidad de veces que aparece el numero 2 es:', contar_numero2)
+    print('La cantidad de veces que aparece el numero 3 es:', contar_numero3)
+    print('La cantidad de veces que aparece el numero 4 es:', contar_numero4)
+    print('La cantidad de veces que aparece el numero 5 es:', contar_numero5)
+    print('La cantidad de veces que aparece el numero 6 es:', contar_numero6)
+
+    print('El valor mas repetido es el:', max(set(valor_de_dados), key=valor_de_dados.count))
 
 def ej4():
     print("Ahora sí! buena suerte :)")
@@ -148,7 +220,7 @@ def ej4():
 
 if __name__ == '__main__':
     print("Ejercicios de práctica")
-    # ej1()
-    # ej2()
-    # ej3()
+    ej1()
+    ej2()
+    ej3()
     # ej4()
