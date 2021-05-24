@@ -60,13 +60,6 @@ def contar_dado(primer_tiro,elegir_numero_repetido):
             repetido.append(elegir_numero_repetido)
     return repetido
 
-def lista_otro_tiro (numero_min, numero_max, cantidad_dados_tirar):
-    lista = []
-    for i in range(cantidad_dados_tirar):
-        numero = random.randrange(numero_min, numero_max+1)
-        lista.append(numero)
-    return lista
-
 def ej1():
     print('Comencemos a crear lo nuestro!')
 
@@ -238,13 +231,13 @@ def ej4():
     tirados.
     '''
     
-    cantidad_dados_tirar = cantidad_dados - len(dados_guardados)
+    cantidad_dados = cantidad_dados - len(dados_guardados)
 
     conteo_tiros = 1
     
     while len(dados_guardados) < 5:
 
-        otro_tiro = lista_otro_tiro(numero_min,numero_max,cantidad_dados_tirar)
+        otro_tiro = lista_de_tiro(numero_min,numero_max,cantidad_dados)
 
         conteo_tiros += 1 # Agregue un contador de tiros
         
@@ -253,7 +246,7 @@ def ej4():
         for i in otro_tiro:
             if i == elegir_numero_repetido:
                 dados_guardados.append(elegir_numero_repetido)
-                cantidad_dados_tirar -= 1
+                cantidad_dados -= 1
                 print('Dado/s guardado/s', dados_guardados)
     
     print('La cantidad de veces que se tiraron los dados es de:', conteo_tiros)   
