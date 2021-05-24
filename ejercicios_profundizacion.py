@@ -53,6 +53,20 @@ def contar(valor_de_dados,valor_a_contar1,valor_a_contar2,
             contador6 += 1
     return contador1,contador2,contador3,contador4,contador5,contador6
 
+def contar_dado(primer_tiro,elegir_numero_repetido):
+    repetido = []
+    for i in primer_tiro:
+        if i == elegir_numero_repetido:
+            repetido.append(elegir_numero_repetido)
+    return repetido
+
+def lista_otro_tiro (numero_min, numero_max, cantidad_dados_tirar):
+    lista = []
+    for i in range(cantidad_dados_tirar):
+        numero = random.randrange(numero_min, numero_max+1)
+        lista.append(numero)
+    return lista
+
 def ej1():
     print('Comencemos a crear lo nuestro!')
 
@@ -177,14 +191,27 @@ def ej4():
     sacados en esa tirada de de dados (son 5 números del 1 al 6)
 
     1) El jugador tira la dados y sacar 5 números aleatorios, puede usar
-    la función de "lista_aleatoria" para generar dichos números.
+    la función de "lista_aleatoria" para generar dichos números.'''
 
+    numero_min = 1
+    numero_max = 6
+    cantidad_dados = 5
+
+    primer_tiro = lista_de_tiro(numero_min,numero_max,cantidad_dados)
+    print('Los numeros del primer tiro son:', primer_tiro)
+
+    '''
     2) Luego debe analizar los 5 números y ver cual es el número que
     más se repitio entre los 5 dados.
     Debe usar la función de Python max con la key de list.count paara
     determinar cual fue el número que más se repitió. Consultar los ejemplos
     vistos en clase o el ejercicio anterior de esta guia.
-
+    '''
+    
+    elegir_numero_repetido = max(set(primer_tiro), key=primer_tiro.count)
+    print('El numero elegido es el', elegir_numero_repetido)
+    
+    '''
     3) Una vez reconocido el número más repetido entre los 5, debe
     guardar en una lista esos números.
     Si por ejemplo salió 4-4-2-1-4, debe quedarse con esos tres "4"
@@ -193,7 +220,12 @@ def ej4():
     Debe realizar un bucle para recorrer la lista de dados_tirados
     y guardar los "4" en nuestra nueva lista dados_guardados
     Utilie append para ir sumando a dados_guardados los valores
-
+    '''
+    dados_guardados = contar_dado(primer_tiro,elegir_numero_repetido)
+    
+    print('Dado/s guardado/s', dados_guardados)
+    
+    '''
     4) Debe volver a tira los dados, generar nuevos
     números aleatorios.
     Si en la lista "dados_guardados" tengo 3 dados guardados
@@ -204,23 +236,46 @@ def ej4():
     Ahora tendré una nueva lista de "dados_tirados" en este caso
     de dos nuevos números aleatorios entre 1 y 6 representando a los dados
     tirados.
+    '''
+    
+    cantidad_dados_tirar = cantidad_dados - len(dados_guardados)
 
+    conteo_tiros = 1
+    
+    while len(dados_guardados) < 5:
+
+        otro_tiro = lista_otro_tiro(numero_min,numero_max,cantidad_dados_tirar)
+
+        conteo_tiros += 1 # Agregue un contador de tiros
+        
+        print('Dado/s arrojado/s', otro_tiro)
+
+        for i in otro_tiro:
+            if i == elegir_numero_repetido:
+                dados_guardados.append(elegir_numero_repetido)
+                cantidad_dados_tirar -= 1
+                print('Dado/s guardado/s', dados_guardados)
+    
+    print('La cantidad de veces que se tiraron los dados es de:', conteo_tiros)   
+
+    '''
     5) Luego de tirar nuevamente los datos, por ejemplo digamos
     que salieron los números: 4-1
     Debo volver a quedarme con el "4" ya que es el número que estoy
     buscando.
     Sino salió el "4" vuelvo a tirar todos los dados.
     Si salió un "4" me lo quedo y lo guardo en "dados_guardados".
-
-    5) Debe repetir este proceso hasta que en su lista de "dados
-    guardados" tenga "generala", es decir, 5 números iguales.
-
     '''
+        
+    '''
+   5) Debe repetir este proceso hasta que en su lista de "dados
+   guardados" tenga "generala", es decir, 5 números iguales.
 
+   ''' 
 
 if __name__ == '__main__':
     print("Ejercicios de práctica")
     ej1()
     ej2()
     ej3()
-    # ej4()
+    ej4()
